@@ -232,13 +232,48 @@ d)  Come up with a (research) question you want to answer with the data
     with the dataset and using R.
     
     **Question:**
-    Which Phase of flight is overall the most dangerous (only looking at accidents and not fatlities) and how has this metric changed over the years 
+    Which Phase of flight is overall the most dangerous and how has this metric changed over the years 
     
     
 e)  Use R to answer your chosen question. Please limit your analysis to
     the functions and techniques we have covered so far in the course.
     You are **not expected** to use advanced statistical models or
     external packages which haven't been introduced.
+    
+    ```{r Exercise-4e, echo=TRUE, message=FALSE, warning=FALSE}
+    make_names <- function(x) {
+        #remove all "." characters (replaced with _)
+        gsub("\\.", "_", make.names(x));
+    }
+    
+    #Load Data and rename
+    ASN2019 <- read_csv("ASN2019.csv") %>% rename_with(make_names);
+    
+    #select only accidents
+    ASN2019_accidents <- ASN2019 %>% select(En_route_accidents, Take_off_accidents, Initial_climb_accidents, Approach_accidents, Landing_accidents);
+    
+    #select only fatalities
+    ASN2019_fatalities <- ASN2019 %>% select(En_route_casualties, Take_off_casualties, Initial_climb_casualties, Approach_fatalities, Landing_fatalities);
+    
+    #make a sum of all the accidents/fatalities for each category
+    ASN2019_sum <- data.frame(
+         type = c("En_route", "Take_off", "Initial_climb", "Approach", "Landing"),
+         sum_accidents = c(sum(ASN2019_accidents$En_route_accidents), sum(ASN2019_accidents$Take_off_accidents), sum(ASN2019_accidents$Initial_climb_accidents), sum(ASN2019_accidents$Approach_accidents), sum(ASN2019_accidents$Landing_accidents)),
+         sum_fatalities = c(sum(ASN2019_fatalities$En_route_casualties), sum(ASN2019_fatalities$Take_off_casualties), sum(ASN2019_fatalities$Initial_climb_casualties), sum(ASN2019_fatalities$Approach_fatalities), sum(ASN2019_fatalities$Landing_fatalities))
+    )
+    
+    #get ratio between accident and fatalities (how many fatalities per accident)
+    ASN2019_sum <- ASN2019_sum %>% mutate(ratio = sum_fatalities / sum_accidents);
+    
+    #arrange and print
+    arrange(ASN2019_sum, desc(ratio));
+    
+    ```
+    Even though the most accidents happened on route and more people died overall, the ratio of casualties per accident is slightly higher on approach. 
+    Take offs and Landings are the most save, with the fewest accidents and casualties.
+    The initial climb phase is slightly more dangerous, but still much saver than the approach and en route phase of the flight.
+    
+    Generally the most dangerous parts of the flight are the approach and on route phase.
 
     
 f)  Create a meaningful plot / figure with the dataset. Make sure to
