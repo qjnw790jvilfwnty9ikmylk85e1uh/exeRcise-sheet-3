@@ -46,6 +46,15 @@ c)  For all of the following tasks in this exercise sheet we ask you to
 
 d)  Name 2 strengths and 2 weaknesses of git. (Don't forget to create a
     commit after this answer, see *1c*)
+    
+    **Strength:**
+    - It enables the possibility for multiple people to collaborate on the same project in different locations on different machines.
+    - It makes it possible to roll back to earlier versions and generally provides a history of the project files
+    
+    **Weakness:**
+    - Requires everyone in the project to have at least some knowledge of how to use it (it can be difficult to learn at first)
+    - Inability to handle large files and properly format non-text files (for example binaries) 
+    
 e)  Knit this exercise sheet. Some new files will automatically be
     generated when knitting the sheet e.g. the HTML page. Ignore these
     files, as we only want to track the source files themselves. You
