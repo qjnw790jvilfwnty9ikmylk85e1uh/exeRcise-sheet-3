@@ -131,7 +131,7 @@ b)  Inspect the film titles manually. Which films form a film series? A
     displays a list of the different series with the titles of the films
     and how many films belong to the series. Output the dataframe.
     
-    ```{r Exercise-3a, echo=TRUE, message=FALSE, warning=FALSE}
+    ```{r Exercise-3b, echo=TRUE, message=FALSE, warning=FALSE}
     # Load the data (pixar_films) and drop unknown films (NA)
     pixar_films_series <- data.frame(
         film = c("Cars", "Finding Nemo", "Monsters University", "Incredibles", "Toystory"),
@@ -153,7 +153,7 @@ c)  Load the `public_response` dataframe into R. Convert the
     highest score. Combine `public_response` with the `pixar_films`
     dataset using an appropriate merge variable.
     
-    ```{r Exercise-3a, echo=TRUE, message=FALSE, warning=FALSE}
+    ```{r Exercise-3c, echo=TRUE, message=FALSE, warning=FALSE}
     # Load the data (public_response) and drop unknown films (NA)
     public_response <- read_csv("public_response.csv") %>% drop_na(film);
     
