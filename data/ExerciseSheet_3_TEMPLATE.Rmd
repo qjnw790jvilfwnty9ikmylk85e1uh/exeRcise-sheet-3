@@ -232,15 +232,14 @@ d)  Come up with a (research) question you want to answer with the data
     with the dataset and using R.
     
     **Question:**
-    Which Phase of flight is overall the most dangerous and how has this metric changed over the years
+    Which Phase of flight is overall the most dangerous (only looking at accidents and not fatlities) and how has this metric changed over the years 
     
     
 e)  Use R to answer your chosen question. Please limit your analysis to
     the functions and techniques we have covered so far in the course.
     You are **not expected** to use advanced statistical models or
     external packages which haven't been introduced.
-    
-    
+
     
 f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
