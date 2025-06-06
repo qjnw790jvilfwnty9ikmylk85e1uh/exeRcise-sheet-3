@@ -24,6 +24,12 @@ output: distill::distill_article
     **not** as a zip archive.
 -   Submission format is HTML. Other formats will lead to a deduction of
     points.
+    
+```{r Load library, echo=TRUE, message=FALSE, warning=FALSE}
+
+#load tidyverse library
+library("tidyverse");
+```
 
 ## Exercise 1: Initializing git (4 Points)
 
@@ -103,8 +109,23 @@ a)  Load the `pixar_films` dataset into R. Clean the dataset by removing
     films without a title. Inspect the variable `film_rating`. What are
     the possible values and what do they mean? Create a factor variable
     for the film rating. Why is this appropriate?
-
-<!-- -->
+    
+    ```{r Exercise-3a, echo=TRUE, message=FALSE, warning=FALSE}
+    # Load the data (pixar_films) and drop unknown films (NA)
+    pixar_films <- read_csv("pixar_films.csv") %>% drop_na(film);
+    
+    #factor film rating variable
+    pixar_films$film_rating <- as.factor(pixar_films$film_rating);
+    
+    # Load the data (public_response) and drop unknown films (NA)
+    public_response <- read_csv("public_response.csv") %>% drop_na(film);
+    
+    ```
+    
+    The *pixar_films$film_rating* variable is a factor with 3 levels (G/PG/NA).
+    The variable models the so called "Motion Picture Association film rating system" which provides an age rating for each film in the US.
+    These ratings are (G/PG/PG-13/R/NC-17) however the current data set only contains films with the lowest two ratings: G(General Audiences) / PG(Parental Guidance Suggested) or no Rating at all.
+    It makes sense to factor this variable because it can only have the values specified by the standard (or NA for no rating).
 
 b)  Inspect the film titles manually. Which films form a film series? A
     film series can be identified by a common word in the titles of the
