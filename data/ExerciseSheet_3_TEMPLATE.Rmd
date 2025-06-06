@@ -117,9 +117,6 @@ a)  Load the `pixar_films` dataset into R. Clean the dataset by removing
     #factor film rating variable
     pixar_films$film_rating <- as.factor(pixar_films$film_rating);
     
-    # Load the data (public_response) and drop unknown films (NA)
-    public_response <- read_csv("public_response.csv") %>% drop_na(film);
-    
     ```
     
     The *pixar_films$film_rating* variable is a factor with 3 levels (G/PG/NA).
