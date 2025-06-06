@@ -133,6 +133,22 @@ b)  Inspect the film titles manually. Which films form a film series? A
     e.g. "Despicable Me" and "Despicable Me 2". Create a dataframe which
     displays a list of the different series with the titles of the films
     and how many films belong to the series. Output the dataframe.
+    
+    ```{r Exercise-3a, echo=TRUE, message=FALSE, warning=FALSE}
+    # Load the data (pixar_films) and drop unknown films (NA)
+    pixar_films_series <- data.frame(
+        film = c("Cars", "Finding Nemo", "Monsters University", "Incredibles", "Toystory"),
+        amount_of_titles = c(3, 2, 2, 2, 4)
+    );
+    
+    ```
+    
+    The films which form a film series are:
+    *Cars:* (Cars, Cars 2, Cars 3)
+    *Finding Nemo:* (Finding Nemo, Finding Dory)
+    *Monsters University:* (Monsters University, Monsters Inc.)
+    *Incredibles:* (The Incredibles, Incredibles 2)
+    *Toystory*: (Toystory, Toystory 2, Toystory 3, Toystory 4)
 
 c)  Load the `public_response` dataframe into R. Convert the
     `cinema_score` variable into a factor while ensuring the factor
