@@ -250,10 +250,10 @@ e)  Use R to answer your chosen question. Please limit your analysis to
     ASN2019 <- read_csv("ASN2019.csv") %>% rename_with(make_names);
     
     #select only accidents
-    ASN2019_accidents <- ASN2019 %>% select(En_route_accidents, Take_off_accidents, Initial_climb_accidents, Approach_accidents, Landing_accidents);
+    ASN2019_accidents <- ASN2019 %>% select(Year, En_route_accidents, Take_off_accidents, Initial_climb_accidents, Approach_accidents, Landing_accidents);
     
     #select only fatalities
-    ASN2019_fatalities <- ASN2019 %>% select(En_route_casualties, Take_off_casualties, Initial_climb_casualties, Approach_fatalities, Landing_fatalities);
+    ASN2019_fatalities <- ASN2019 %>% select(Year, En_route_casualties, Take_off_casualties, Initial_climb_casualties, Approach_fatalities, Landing_fatalities);
     
     #make a sum of all the accidents/fatalities for each category
     ASN2019_sum <- data.frame(
@@ -279,6 +279,29 @@ e)  Use R to answer your chosen question. Please limit your analysis to
 f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.
+    
+    ```{r Exercise-4f, fig.cap="Accident- and Fatalityrate in Aviation over the flight phases | Source: https://github.com/owid/owid-datasets/tree/master/datasets/Aviation%20accidents%20and%20fatalities%20by%20flight%20phase%20(ASN%2C%202019)" echo=TRUE, message=FALSE, warning=FALSE}
+    
+    #pivot longer to get types for line chart
+    ASN2019_accidents_by_type <- ASN2019_accidents %>% pivot_longer(!Year, names_to = "type", values_to = "count");
+    
+    #create plot
+    ggplot(
+        data = ASN2019_accidents_by_type,
+        mapping = aes(
+            x = Year,
+            y = count,
+            color = type,
+    )) + labs(
+        x = "Year",
+        y = "Amount",
+        color = "Type",
+        title = "Accident- and Fatalityrate in Aviation",
+        subtitle = "over the flight phases per Year",
+        caption = "Source: https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-03-11",
+    ) + geom_line(size = 0.7);
+    
+    ```
 
 ## Final Note
 
