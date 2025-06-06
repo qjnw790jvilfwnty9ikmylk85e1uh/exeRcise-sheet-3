@@ -280,7 +280,7 @@ f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.
     
-    ```{r Exercise-4f, fig.cap="Accident- and Fatalityrate in Aviation over the flight phases | Source: https://github.com/owid/owid-datasets/tree/master/datasets/Aviation%20accidents%20and%20fatalities%20by%20flight%20phase%20(ASN%2C%202019)" echo=TRUE, message=FALSE, warning=FALSE}
+    ```{r Exercise-4f, fig.cap="Accident- and Fatalityrate in Aviation over the flight phases | Source: https://github.com/owid/owid-datasets/tree/master/datasets/Aviation%20accidents%20and%20fatalities%20by%20flight%20phase%20(ASN%2C%202019)", echo=TRUE, message=FALSE, warning=FALSE}
     
     #pivot longer to get types for line chart
     ASN2019_accidents_by_type <- ASN2019_accidents %>% pivot_longer(!Year, names_to = "type", values_to = "count");
